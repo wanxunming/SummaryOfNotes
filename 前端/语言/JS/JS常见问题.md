@@ -42,3 +42,55 @@ function fn(){
 ```
 
 这里之所以执行完这个函数num没有被销毁是因为那个匿名函数的问题，因为这个匿名函数用到了这个num，所以没有被销毁，一直保持在内存中，因此我们f()时num可以一直加。
+
+
+
+### JS原型对象的理解
+
+#### 有关原型对象的三个重要属性：
+
+protopyte（显式原型）：专属于函数（除箭头函数）的一个属性，原型对象，用来给将来new出来的实例作为父级使用
+
+__ proto __ （隐式原型）:用于指向构造当前实例的构造函数中的prototype，隐式的自调用，可以通过它获取到prototype中的属性和方法
+
+constructor（protopyte专属）：标识当前protopyte所对应的构造函数。
+
+使用构造函数和原型时：将属性写在构造函数中，将方法写在原型中并且在原型中使用constructor来指向前面的构造函数。
+
+```js
+// 构造函数
+function Fn(name,age){
+  // 属性
+  this.name = name;
+  this.age = age;
+}
+// 原型对象 内部是key-value形式
+Fn.prototype = {
+  //反过来引用自身构造函数
+  constructor : Fn,
+  // 方法
+  FnName:function(){
+    console.log("@@name="+this.name);
+  },
+  FnAge:function(){
+    console.log("@@age="+this.age);
+  }
+}
+var fnObject = new Fn("wxm",24);
+console.log(fnObject.name);	//wxm
+console.log(fnObject.age);	//24
+fnObject.FnName(fnObject);	//@@name=wxm
+fnObject.FnAge(fnObject);		//@@age=24
+```
+
+总结上面的例子：每个对象函数有名为protopyte属性，用于引用原型对象，此原型对象上又有constructor属性反过来引用函数本身，这是一种循环引用。
+
+```js
+Fn.prototype.constructor === Fn //true
+fnObject.__proto__.constructor === Fn //true
+```
+
+
+
+#### 函数的原型对象：
+
