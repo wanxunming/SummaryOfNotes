@@ -6,7 +6,7 @@
 
 ### 作用域
 
-
+每个函数都有自己的执行环境，当执行流进入一个函数时，函数的执行环境就会被推入一个执行环境栈中。而在函数执行之后，栈将执行结束的函数的执行环境弹出，把控制权返回给之前的执行环境。活动对象是在函数调用时创建的一个内部变量，执行环境定义了变量或函数有权访问的其他数据，决定了它们各自的行为。
 
 ### 闭包
 
@@ -94,3 +94,49 @@ fnObject.__proto__.constructor === Fn //true
 
 #### 函数的原型对象：
 
+​	在JavaScript中，我们创建一个函数A对应的浏览器内存中会创建一个对象B，每个函数都会有一个默认的属性：prototype指向对应生成的对象，这个对象B我们称为函数A的原型对象，对象B中存在一个默认属性constructor反过来指向给函数A。
+
+​	当使用构造函数创建new对象时，被创建的对象默认有一个隐式属性 __ proto __ 指向其父构造函数的原型对象，这个属性也被[[prototype]]表示，**这个是对象的继承原型链**
+
+<img src="PictureLibrary/image-20220313210927697.png" alt="image-20220313210927697" style="zoom: 50%;" />
+
+
+
+### 继承
+
+JavaScript继承是在原型链上面实现的，原型链：其基本思想是利用原型让一个引用类型继承另一个引用类型的数据和方法。
+
+回顾构造函数，原型对象，对象之间的关系：每个构造函数都有一个prototype属性指向对应的原型对象，原型对象中又存在constructor反过来指向构造函数，每次new创建出来的新对象都有一个默认的属性[[prototype]]指向父构造函数的原型，当调用新对象的方法或属性的时候，是先在该对象上面查找，若是找不到会通过隐式原型属性[[prototype]]去向父查找，直至找到或不存在。
+
+#### 更换构造函数的原型
+
+原型其实是一个对象，通常是浏览器自动帮我们创建的，而且自动的将构造函数的prototype指向这个新创建的原型对象，我们完全可以将原型对象修改为我们自己定义的一个对象。
+
+```js
+// 创建一个父构造函数，定义一些属性
+function Father(){
+  this.name = "wxm";
+};
+//	给Father的原型对象上添加一个新的方法
+Father.prototype.getName = function(){
+  console.log(this.name);
+}
+//	创建另一个子构造函数，定义一些子的属性
+function Son(){
+  this.age = 18;
+}
+//	将子构造函数的原型手动的指向父构造函数的示例对象（更改了构造函数的原型）
+Son.prototype = new Father();
+//	给子的原型对象上添加方法
+Son.prototype.getAge = function(){
+  console.log(this.age);
+}
+//	创建Son的实例对象，该对象既继承了Son的方法和属性，也继承了Father的属性和方法
+var son = new Son();
+console.log(son.name);
+console.log(son.age);
+son.getName();
+son.getAge();
+```
+
+<img src="PictureLibrary/image-20220313220437888.png" alt="image-20220313220437888" style="zoom:33%;" />
