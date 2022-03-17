@@ -78,9 +78,9 @@ A(2,8).then((data)=>{
 
 #### promise的all、race方法：
 
-all：将执行完全部的promise函数对象才会执行它的then或catch方法；（内部谁慢谁决定触发）
+all：将执行完全部的promise函数对象才会执行它的then或catch方法；调用catch时会停止内部还没完成的promise函数执行
 
-race：内部函数其中之一被执行将立刻执行它的then或catch方法，且不影响其他还未执行完成的promise函数；（内部谁快谁决定）
+race：内部函数其中之一被执行将立刻执行它的then或catch方法，且不影响其他还未执行完成的promise函数；
 
 ```js
 var A = function(Max,Min,Key,Time){
@@ -99,12 +99,14 @@ var A = function(Max,Min,Key,Time){
   })
 };
 
-var B = function(){
-  return new Promise(function(resolve,reject){
-  })
-};
-
+// 接收的数据data：只有在内部promise对象都成功才会执行then，且data数据是内部三个函数的resolve数据的数组形式给到，当其中一个A函数执行了reject，Promise.all将会立即执行.catch方法，且会停止执行后面还没触发的A函数（then触发是全部的）
 Promise.all([A(1,8,"A1",1000),A(1,5,"A2",500),A(1,63,"A3",800)]).then((data)=>{
+  console.log(data);
+}).catch((err)=>{
+	console.log(err);
+})
+// 和all相反；接收的数据data：只要内部promise对象有成功就会执行then，且data数据是内部最先调用函数的resolve数据，当其中一个A函数执行了resolve或者reject，Promise.race将会立即执行对应的.then.catch方法，且会停止执行后面还没触发的A函数。（就看内部A谁执行的最快，下面例子是会一直以A2的数据作为Promise的返回值去执行，因为这个异步函数是最快的。）
+Promise.race([A(1,8,"A1",1000),A(1,5,"A2",500),A(1,63,"A3",800)]).then((data)=>{
   console.log(data);
 }).catch((err)=>{
 	console.log(err);
