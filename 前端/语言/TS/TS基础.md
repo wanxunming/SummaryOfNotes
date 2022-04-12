@@ -1,3 +1,9 @@
+### TS环境：
+
+tsc -v查看typescript的版本
+
+在文件中使用 tsc --init ，可以创建一个tsconfig.json文本，可以自动的将编写的TS文件转化为js文件，在同级目录下。
+
 ### TS基本类型：
 
 布尔类型：boolean
