@@ -1,7 +1,7 @@
 #### Git 常用命令：
 
 ```js
-// 创建分支xxx window修改
+// 创建分支xxx iwj
 git branch XXX
 
 // 切换到xxx分支 && 将HEAD指定对应的提交版本
