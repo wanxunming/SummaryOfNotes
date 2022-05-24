@@ -4,7 +4,7 @@
 // 创建分支xxx Mac修改
 git branch XXX
 
-// 切换到xxx分支 && 将HEAD指定对应的提交版本
+// 切换到xxx分支 && 将HEAD指定对应的提交版本 window
 // 首先看看操作符 (^)。把这个符号加在引用名称的后面，表示让 Git 寻找指定提交记录的父提交。
 //所以 main^ 相当于“main 的父节点”。git checkout main^
 //main^^ 是 main 的第二个父节点 git checkout main^^
