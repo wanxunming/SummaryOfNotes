@@ -42,3 +42,32 @@
 
 <img src="PictureLibrary/image-20220421215516592.png" alt="image-20220421215516592" style="zoom:50%;" />
 
+
+
+
+
+#### Nginx使用异常(windows系统)
+
+报错：nginx: [error] CreateFile() "D:\nginx-1.20.1/logs/nginx.pid" failed (2: The system cannot find the file specified)
+
+问题的直接原因就是在nginx的安装目录下的logs目录里面没有nginx.pid这个文件，一般情况下nginx启动时会自动创建nginx.pid文件的
+
+1.任务管理器里面找到原来的nginx进程（如果有的话）并关掉，然后使用cmd命令的方式启动nginx
+
+2.cmd 进入 nginx安装目录
+
+3.输入命令 start nginx 或者 nginx.exe 启动nginx
+
+4.去nginx目录下logs目录下看看有没有nginx.pid的文件；如果没有重复123操作
+
+5.如果nginx.pid已经生成，再去修改配置文件后就可以正常重启了
+
+6.nginx -s reload
+
+
+
+```
+在电脑上配置本地文件 Nginx转发出去：
+alias: D:/download;
+```
+
