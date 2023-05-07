@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="32018ac1-a136-4faf-9b47-bde5dd70acdf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegExp.md" beforeDir="false" afterPath="$PROJECT_DIR$/RegExp.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/前端/其它/进程&amp;线程.md" beforeDir="false" afterPath="$PROJECT_DIR$/前端/其它/进程&amp;线程.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/前端/基础/函数/Promise.md" beforeDir="false" afterPath="$PROJECT_DIR$/前端/基础/函数/Promise.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/前端/框架/vue/Vue3.0/API.md" beforeDir="false" afterPath="$PROJECT_DIR$/前端/框架/vue/Vue3.0/API.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2Nb389aov4Ehvl07AdmHXn8EP6z" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="32018ac1-a136-4faf-9b47-bde5dd70acdf" name="Default Changelist" comment="" />
+      <created>1679918793174</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679918793174</updated>
+      <workItem from="1679918798230" duration="55000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

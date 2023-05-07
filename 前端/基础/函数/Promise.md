@@ -113,3 +113,15 @@ Promise.race([A(1,8,"A1",1000),A(1,5,"A2",500),A(1,63,"A3",800)]).then((data)=>{
 })
 ```
 
+
+
+#### promise和observible区别
+
+Observable 是 lazy 的，只有订阅才输出，同时 Observable 可以接受多个值。Promise 只能 resolve 一次。
+
+Promise 内部 resolve 一定是异步的，而 Observable 则可以自由发挥
+
+Promise 只会执行一次，创建之后就会执行，不能重复执行，而 Observable 每订阅一次会执行一次，而如果想只执行一次，可以利用 share。
+
+Promise 不可以取消，而 Observable 可以取消
+

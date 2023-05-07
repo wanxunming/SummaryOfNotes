@@ -331,6 +331,73 @@ export default {
 
 #### reactive()
 
+返回一个对象的响应式代理
+
+#### readonly()
+
+接受一个对象 (不论是响应式还是普通的) 或是一个 [ref](https://cn.vuejs.org/api/reactivity-core.html#ref)，返回一个原值的只读代理。
+
+#### watch()
+
+侦听一个或多个响应式数据源，并在数据源变化时调用所给的回调函数。
+
+第一个参数是侦听器的**源**。这个来源可以是以下几种：
+
+- 一个函数，返回一个值
+- 一个 ref
+- 一个响应式对象
+- ...或是由以上类型的值组成的数组
+
+第二个参数是在发生变化时要调用的回调函数。这个回调函数接受三个参数：新值、旧值，以及一个用于注册副作用清理的回调函数。该回调函数会在副作用下一次重新执行前调用，可以用来清除无效的副作用，例如等待中的异步请求。
+
+当侦听多个来源时，回调函数接受两个数组，分别对应来源数组中的新值和旧值。
+
+第三个可选的参数是一个对象，支持以下这些选项：
+
+- **`immediate`**：在侦听器创建时立即触发回调。第一次调用时旧值是 `undefined`。
+- **`deep`**：如果源是对象，强制深度遍历，以便在深层级变更时触发回调。参考[深层侦听器](https://cn.vuejs.org/guide/essentials/watchers.html#deep-watchers)一节。
+
+```js
+// 侦听单个来源
+function watch<T>(
+  source: WatchSource<T>,
+  callback: WatchCallback<T>,
+  options?: WatchOptions
+): StopHandle
+
+// 侦听多个来源
+function watch<T>(
+  sources: WatchSource<T>[],
+  callback: WatchCallback<T[]>,
+  options?: WatchOptions
+): StopHandle
+
+type WatchCallback<T> = (
+  value: T,
+  oldValue: T,
+  onCleanup: (cleanupFn: () => void) => void
+) => void
+
+type WatchSource<T> =
+  | Ref<T> // ref
+  | (() => T) // getter
+  | T extends object
+  ? T
+  : never // 响应式对象
+
+interface WatchOptions extends WatchEffectOptions {
+  immediate?: boolean // 默认：false
+  deep?: boolean // 默认：false
+  flush?: 'pre' | 'post' | 'sync' // 默认：'pre'
+  onTrack?: (event: DebuggerEvent) => void
+  onTrigger?: (event: DebuggerEvent) => void
+}
+```
+
+
+
+#### isRef()
+
 
 
 
